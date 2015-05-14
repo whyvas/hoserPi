@@ -16,6 +16,22 @@ LOWWATER = 10 # Low water switch
 # ADC pin for temperature
 # ADC pin for humidity
 
+#Variables
+# ADC high and low thresholds for moisture sensors
+M1LOW = 0
+M1HIGH = 0
+M2LOW = 0
+M2HIGH = 0
+M3LOW = 0
+M3HIGH = 0
+M4LOW = 0
+M4HIGH = 0
+M5LOW = 0
+M5HIGH = 0
+
+
+
+
 
 # setup function is automatically called at WebIOPi startup
 def setup():
@@ -28,28 +44,39 @@ GPIO.setFunction(S4, GPIO.OUT)
 GPIO.setFunction(S5, GPIO.OUT)
 GPIO.setFunction(LOWWATER, GPIO.IN)
 
-
-
-
-
 # loop function is repeatedly called by WebIOPi 
 def loop():
-    # retrieve current datetime
-    now = datetime.datetime.now()
+    #Read in all values from all sensors
+    m1 = 
+    m2 = 
+    m3 = 
+    m4 = 
+    m5 = 
+    pump = 
+    light = 
+    humidity =
+    temp =
+    baro = 
+    
+    
+    # Check each sensor and water if required
+    if (m1 =< M1LOW) ):
+        while (m1 =< M1HIGH):
+            if (GPIO.digitalRead(S1, GPIO.LOW)
+                GPIO.digitalWrite(S1, GPIO.LOW)
+                sleep(5)
+        GPIO.digitalWrite(S1, GPIO.HIGH)
 
-    # toggle light ON all days at the correct time
-    if ((now.hour == HOUR_ON) and (now.minute == 0) and (now.second == 0)):
-        if (GPIO.digitalRead(LIGHT) == GPIO.LOW):
-            GPIO.digitalWrite(LIGHT, GPIO.HIGH)
+        # wait 15 minutes before looping again
+    webiopi.sleep(900)
 
-    # toggle light OFF
-    if ((now.hour == HOUR_OFF) and (now.minute == 0) and (now.second == 0)):
-        if (GPIO.digitalRead(LIGHT) == GPIO.HIGH):
-            GPIO.digitalWrite(LIGHT, GPIO.LOW)
-
-    # gives CPU some time before looping again
-    webiopi.sleep(1)
-
-# destroy function is called at WebIOPi shutdown
+# Turn off all pumps and solenoids when exiting.
 def destroy():
-    GPIO.digitalWrite(LIGHT, GPIO.LOW)
+    GPIO.digitalWrite(P1, GPIO.HIGH)
+    GPIO.digitalWrite(S1, GPIO.HIGH)
+    GPIO.digitalWrite(S2, GPIO.HIGH)
+    GPIO.digitalWrite(S3, GPIO.HIGH)
+    GPIO.digitalWrite(S4, GPIO.HIGH)
+    GPIO.digitalWrite(S5, GPIO.HIGH)
+    
+    
