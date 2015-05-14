@@ -11,7 +11,7 @@ Upcoming Features:
 
 -Barometric pressure sensor
 
--5 zone Sunlight sensors (my garden is in a covered area)
+-5 zone Sunlight sensors (my garden is in a partially covered area so the sun coverage varies throughout the day)
 
 -Low water sensor
 
