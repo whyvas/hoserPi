@@ -97,11 +97,8 @@ def setMode(mode):
     
 # Turn off all pumps and solenoids when exiting.
 def destroy():
-    GPIO.digitalWrite(P1, GPIO.HIGH)
-    GPIO.digitalWrite(S1, GPIO.HIGH)
-    GPIO.digitalWrite(S2, GPIO.HIGH)
-    GPIO.digitalWrite(S3, GPIO.HIGH)
-    GPIO.digitalWrite(S4, GPIO.HIGH)
-    GPIO.digitalWrite(S5, GPIO.HIGH)
+    pins = [P1, S1, S2, S3, S4, S5]
+for pin in pins:
+    GPIO.digitalWrite(pin, GPIO.HIGH)
     
     
