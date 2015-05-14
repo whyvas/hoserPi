@@ -20,15 +20,15 @@ LOWWATER = 10 # Low water switch
 #Variables
 # ADC high and low thresholds for moisture sensors
 M1LOW = 0
-M1HIGH = 0
+M1HIGH = 400
 M2LOW = 0
-M2HIGH = 0
+M2HIGH = 400
 M3LOW = 0
-M3HIGH = 0
+M3HIGH = 400
 M4LOW = 0
-M4HIGH = 0
+M4HIGH = 400
 M5LOW = 0
-M5HIGH = 0
+M5HIGH = 400
 
 
 
@@ -44,20 +44,21 @@ GPIO.setFunction(S3, GPIO.OUT)
 GPIO.setFunction(S4, GPIO.OUT)
 GPIO.setFunction(S5, GPIO.OUT)
 GPIO.setFunction(LOWWATER, GPIO.IN)
+mcp = webiopi.deviceInstance("mcp") # retrieve the device named "mcp" in the configuration
 
 # loop function is repeatedly called by WebIOPi 
 def loop():
     #Read in all values from all sensors
-    m1 = 
-    m2 = 
-    m3 = 
-    m4 = 
-    m5 = 
+    m1 = mcp.analogRead(0)
+    m2 = mcp.analogRead(1)
+    m3 = mcp.analogRead(2)
+    m4 = mcp.analogRead(3)
+    m5 = mcp.analogRead(4)
     pump = GPIO.digitalRead(P1)
-    light = 
-    humidity =
-    temp =
-    baro = 
+    light = mcp.analogRead(5)
+    humidity = mcp.analogRead(6)
+    temp = mcp.analogRead(7)
+    #baro = 
 
 #Auto mode loop    
     if (AUTO):
