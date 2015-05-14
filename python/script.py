@@ -52,7 +52,7 @@ def loop():
     m3 = 
     m4 = 
     m5 = 
-    pump = 
+    pump = GPIO.digitalRead(P1)
     light = 
     humidity =
     temp =
@@ -62,10 +62,17 @@ def loop():
     # Check each sensor and water if required
     if (m1 =< M1LOW) ):
         while (m1 =< M1HIGH):
-            if (GPIO.digitalRead(S1, GPIO.LOW)
+            if (GPIO.digitalRead(S1) == GPIO.HIGH):
                 GPIO.digitalWrite(S1, GPIO.LOW)
                 sleep(5)
         GPIO.digitalWrite(S1, GPIO.HIGH)
+
+
+
+
+
+
+
 
         # wait 15 minutes before looping again
     webiopi.sleep(900)
