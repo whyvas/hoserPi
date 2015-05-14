@@ -2,6 +2,7 @@ import webiopi
 import datetime
 
 GPIO = webiopi.GPIO
+AUTO = True
 
 # GPIO pin declarations using BCM numbering
 P1 = 0  # Water pump relay 
@@ -57,26 +58,42 @@ def loop():
     humidity =
     temp =
     baro = 
-    
-    
-    # Check each sensor and water if required
-    if (m1 =< M1LOW) ):
-        while (m1 =< M1HIGH):
-            if (GPIO.digitalRead(S1) == GPIO.HIGH):
-                GPIO.digitalWrite(S1, GPIO.LOW)
-                sleep(5)
-        GPIO.digitalWrite(S1, GPIO.HIGH)
 
-
-
-
-
+#Auto mode loop    
+    if (AUTO):
+        # Check each sensor and water if required
+        if (m1 =< M1LOW) ):
+            while (m1 =< M1HIGH):
+                if (GPIO.digitalRead(S1) == GPIO.HIGH):
+                    GPIO.digitalWrite(S1, GPIO.LOW)
+                    sleep(5)
+            GPIO.digitalWrite(S1, GPIO.HIGH)
 
 
 
         # wait 15 minutes before looping again
-    webiopi.sleep(900)
+        webiopi.sleep(900)
+#Manual mode loop
+    elif
 
+
+
+#macros for javascript         
+@webiopi.macro
+def getMode():
+    if (AUTO):
+        return "auto"
+    return "manual"
+
+@webiopi.macro
+def setMode(mode):    
+    global AUTO
+    if (mode == "auto"):
+        AUTO = True
+    elif (mode == "manual"):
+        AUTO = False
+    return getMode()
+    
 # Turn off all pumps and solenoids when exiting.
 def destroy():
     GPIO.digitalWrite(P1, GPIO.HIGH)
