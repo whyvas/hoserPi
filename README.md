@@ -1,5 +1,5 @@
 # hoserPi
-Yet another Raspberry Pi gardening system, the goal of this project is to setup 5 independant zones in elevated beds. Each bed will have a soil moisture sensor and a solenoid controlled watering system. The system will run on python and the webioPi framework. Instead of hooking the system up to the water main, I will be using a 30 gallon barrel with a low water switch as I am scared of flooding my yard should something go wrong.
+Yet another Raspberry Pi gardening system. The goal of this project is to setup 5 independant zones in elevated beds. Each bed will have a soil moisture sensor and a solenoid controlled watering system. The system will run on python and the webioPi framework. Instead of hooking the system up to the water main, I will be using a 30 gallon barrel with a low water switch as I am scared of flooding my yard should something go wrong.
 
 Upcoming Features:
 
