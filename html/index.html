@@ -2,15 +2,25 @@
 <html>
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>WebIOPi | Light Control</title>
+        <title>hoserPi | Automatic Irrigation Control</title>
         <script type="text/javascript" src="/webiopi.js"></script>
         <script type="text/javascript">
         webiopi().ready(function() {
-                // Create a "Light" labeled button for GPIO 17
-                var button = webiopi().createGPIOButton(17, "Light");
+                // Create a zone and pump buttons labeled button for solenoid valves using GPIO pins, 4,17,27,22,23,24
+                var pump = webiopi().createGPIOButton(4, "Pump");
+		var zone1 = webiopi().createGPIOButton(17, "Zone 1");
+		var zone2 = webiopi().createGPIOButton(27, "Zone 2");
+		var zone3 = webiopi().createGPIOButton(22, "Zone 3");
+		var zone4 = webiopi().createGPIOButton(23, "Zone 4");
+		var zone5 = webiopi().createGPIOButton(24, "Zone 5");
 
                 // Append button to HTML element with ID="controls" using jQuery
-                $("#controls").append(button);
+                $("#controls").append(pump);
+		$("#controls").append(zone1);
+		$("#controls").append(zone2);
+		$("#controls").append(zone3);
+		$("#controls").append(zone4);
+		$("#controls").append(zone5);
 
                 // Refresh GPIO buttons
                 // pass true to refresh repeatedly of false to refresh once
@@ -22,23 +32,28 @@
                 button {
                         display: block;
                         margin: 5px 5px 5px 5px;
-                        width: 160px;
+                        width: 120px;
                         height: 45px;
-                        font-size: 24pt;
+                        font-size: 20pt;
                         font-weight: bold;
                         color: white;
                 }
                 
-                #gpio17.LOW {
-                        background-color: Black;
-                }
-                
-                #gpio17.HIGH {
-                        background-color: Blue;
-                }
+                #gpio4.LOW {background-color: Blue;}
+                #gpio4.HIGH {background-color: Black;}
+		#gpio17.LOW {background-color: Green;}
+                #gpio17.HIGH {background-color: Black;}
+		#gpio22.LOW {background-color: Green;}
+                #gpio22.HIGH {background-color: Black;}
+		#gpio23.LOW {background-color: Green;}
+                #gpio23.HIGH {background-color: Black;}
+		#gpio24.LOW {background-color: Green;}
+                #gpio24.HIGH {background-color: Black;}
+		#gpio27.LOW {background-color: Green;}
+                #gpio27.HIGH {background-color: Black;}
         </style>
 </head>
 <body>
-        <div id="controls" align="center"></div>
+        <div id="controls" align="left"></div>
 </body>
 </html>
